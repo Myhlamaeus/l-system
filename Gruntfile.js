@@ -58,6 +58,17 @@ module.exports = function (grunt) {
                 },
                 "src": ["test/index.js"]
             }
+        },
+        "connect": {
+            "options": {
+                "hostname": "localhost"
+            },
+            "examples": {
+                "options": {
+                    "keepalive": true,
+                    "open": "http://localhost:8000/examples/index.html"
+                }
+            }
         }
     });
 

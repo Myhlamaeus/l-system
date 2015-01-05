@@ -1,0 +1,20 @@
+{
+  "name": "l-system-examples",
+  "version": "0.0.0",
+  "homepage": "https://github.com/ileri/l-system",
+  "authors": [
+    "Malte-Maurice Dreyer <dreyer.maltem@gmail.com>"
+  ],
+  "license": "GPL-3.0",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "es6-module-loader": "~0.11.1"
+  }
+}

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>L-System examples</title>
+
+        <style>
+            * {
+                box-sizing: border-box;
+            }
+
+            body {
+                margin: 0;
+                padding: 0;
+            }
+
+            form, canvas {
+                position: absolute;
+                top: 0;
+                height: 100%;
+            }
+
+            form {
+                width: 15%;
+                padding: 8px;
+                background-color: lightgrey;
+            }
+
+            canvas {
+                left: 15%;
+                width: 85%;
+            }
+
+            label, select, input, fieldset, button {
+                display: block;
+                width: 100%;
+            }
+
+            label, fieldset, button {
+                margin-top: 4px;
+            }
+
+            select, input, fieldset, button {
+                margin-bottom: 4px;
+            }
+        </style>
+    </head>
+
+    <body>
+        <form id="l-system-example-selection">
+            <label for="name">Example</label>
+            <select name="name" id="name">
+                <option>fractal-plant</option>
+            </select>
+            <label for="iterations">Iterations</label>
+            <input type="number" name="iterations" id="iterations" value="5">
+
+            <fieldset name="additional-parameters">
+                <legend>Additional Parameters</legend>
+
+                <div data-for="fractal-plant">
+                    <label for="fractal-plant-angle">Angle</label>
+                    <input type="number" id="fractal-plant-angle" value="25">
+                    <label for="fractal-plant-angle-start">Start Angle</label>
+                    <input type="number" id="fractal-plant-angle-start" value="40">
+
+                    <label for="fractal-plant-length-start">Start Length</label>
+                    <input type="number" id="fractal-plant-length-start" value="10">
+                    <label for="fractal-plant-length-change">Change in Length</label>
+                    <input type="number" id="fractal-plant-length-change" value="0">
+                </div>
+            </fieldset>
+
+            <button type="submit">Render</button>
+        </form>
+
+        <canvas id="l-system-example-canvas"></canvas>
+
+        <script src="bower_components/traceur/traceur.js"></script>
+        <script>
+            traceur.options.experimental = true;
+        </script>
+        <script src="bower_components/es6-module-loader/dist/es6-module-loader.js"></script>
+        <script>
+            System.baseURL = location.protocol + "//" + location.host;
+            System.import("examples/index");
+        </script>
+    </body>
+</html>
