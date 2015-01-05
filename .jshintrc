@@ -9,7 +9,7 @@
     "indent": 4,
     "latedef": true,
     "maxdepth": 4,
-    "maxstatements": 15,
+    "maxstatements": 20,
     "newcap": true,
     "noarg": true,
     "noempty": true,
