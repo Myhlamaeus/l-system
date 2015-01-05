@@ -1,0 +1,19 @@
+{
+  "name": "l-system",
+  "main": "l-system.js",
+  "version": "0.0.0",
+  "authors": [
+    "Malte-Maurice Dreyer <dreyer.maltem@gmail.com>"
+  ],
+  "moduleType": [
+    "es6"
+  ],
+  "license": "GPL-3.0",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "name": "l-system",
+  "version": "0.0.0",
+  "description": "l-system\r =======",
+  "main": "l-system.js",
+  "scripts": {
+    "test": "grunt test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ileri/l-system.git"
+  },
+  "keywords": [
+    "l-system"
+  ],
+  "author": "Malte-Maurice Dreyer <dreyer.maltem@gmail.com>",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/ileri/l-system/issues"
+  },
+  "homepage": "https://github.com/ileri/l-system",
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-contrib-jshint": "^0.10.0",
+    "grunt-mocha-test": "^0.12.4",
+    "jshint-stylish": "^1.0.0",
+    "load-grunt-tasks": "^1.0.0",
+    "mocha": "^2.1.0",
+    "time-grunt": "^1.0.0",
+    "traceur": "0.0.79"
+  },
+  "dependencies": {}
+}
