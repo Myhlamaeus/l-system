@@ -71,8 +71,8 @@ Object.assign(LSystem.prototype, {
                 break;
             }
         }
-    },
-    [Symbol.iterator]: function() {
-        return (new LSystem(this.axiom, this.productionRules)).generator();
     }
 });
+LSystem.prototype[Symbol.iterator] = function() {
+    return (new LSystem(this.axiom, this.productionRules)).generator();
+};
