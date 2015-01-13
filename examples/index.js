@@ -41,18 +41,28 @@ form.addEventListener("submit", function(e) {
         window.performance.mark("lSystemInstantiation");
         const lSystem = new LSystem(example.axiom, example.productionRules);
 
-        window.performance.mark("lSystemGeneration");
-        for(let i = 0; i < iterations; ++i) {
-            lSystem.step();
+        if(example.result) {
+            window.performance.mark("lSystemGeneration");
+            for(let i = 0; i < iterations; ++i) {
+                lSystem.step();
+            }
+            window.performance.mark("exampleStart");
+            example.default(canvas.getContext("2d"), lSystem.current, ...additionalParameters, canvas);
+            window.performance.mark("exampleEnd");
+        } else {
+            window.performance.mark("exampleStart");
+            example.default(canvas.getContext("2d"), lSystem, iterations, ...additionalParameters, canvas);
+            window.performance.mark("exampleEnd");
         }
-        window.performance.mark("exampleStart");
-        example.default(canvas.getContext("2d"), lSystem.current, ...additionalParameters);
-        window.performance.mark("exampleEnd");
 
         window.performance.measure("exampleSetup", "exampleFormSubmit", "exampleImport");
         window.performance.measure("exampleImport", "exampleImport", "lSystemInstantiation");
-        window.performance.measure("lSystemInstantiation", "lSystemInstantiation", "lSystemGeneration");
-        window.performance.measure("lSystemGeneration", "lSystemGeneration", "exampleStart");
+        if(example.result) {
+            window.performance.measure("lSystemInstantiation", "lSystemInstantiation", "lSystemGeneration");
+            window.performance.measure("lSystemGeneration", "lSystemGeneration", "exampleStart");
+        } else {
+            window.performance.measure("lSystemInstantiation", "lSystemInstantiation", "exampleStart");
+        }
         window.performance.measure("example", "exampleStart", "exampleEnd");
         window.performance.measure("totalExample", "exampleFormSubmit", "exampleEnd");
 
