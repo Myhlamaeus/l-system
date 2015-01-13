@@ -1,0 +1,38 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+form, canvas {
+    position: absolute;
+    top: 0;
+    height: 100%;
+}
+
+form {
+    width: 15%;
+    padding: 8px;
+    background-color: lightgrey;
+}
+
+canvas {
+    left: 15%;
+    width: 85%;
+}
+
+label, select, input, fieldset, button {
+    display: block;
+    width: 100%;
+}
+
+label, fieldset, button {
+    margin-top: 4px;
+}
+
+select, input, fieldset, button {
+    margin-bottom: 4px;
+}
