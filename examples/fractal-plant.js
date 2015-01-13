@@ -1,19 +1,44 @@
 const objGen = function*(obj) {for(let key of Object.keys(obj)) {yield [key, obj[key]];}},
-    Vector = function(...args) {this.push(...args)};
+    Vector = function(...args) {this.push(...args)},
+    degToRad = function(deg) {
+        return deg * Math.PI / 180;
+    },
+    addNum = function(ele, i, arr) {arr[i] += this;},
+    addArr = function(ele, i, arr) {arr[i] += this[i];},
+    timesNum = function(ele, i, arr) {arr[i] *= this;},
+    timesArr = function(ele, i, arr) {arr[i] *= this[i];};
 
 Vector.prototype = Object.assign(Object.create(Array.prototype), {
     "constructor": Vector,
+    "slice": function() {
+        return new this.constructor(...Array.prototype.slice.apply(this, arguments));
+    },
+    "map": function() {
+        return new this.constructor(...Array.prototype.map.apply(this, arguments));
+    },
     "add": function(b) {
         if(typeof(b) === "number") {
-            return new this.constructor(...this.map((ele) => ele + b));
+            this.forEach(addNum, b);
+        } else {
+            this.forEach(addArr, b);
         }
-        return new this.constructor(...this.map((ele, i) => ele + b[i]));
+
+        return this;
+    },
+    "addCopy": function(b) {
+        return this.slice().add(b);
     },
     "times": function(b) {
         if(typeof(b) === "number") {
-            return new this.constructor(...this.map((ele) => ele * b));
+            this.forEach(timesNum, b);
+        } else {
+            this.forEach(timesArr, b);
         }
-        return new this.constructor(...this.map((ele, i) => ele * b[i]));
+
+        return this;
+    },
+    "timesCopy": function(b) {
+        return this.slice().times(b);
     },
     "toJSON": function() {
         return Array.prototype.slice.call(this);
@@ -37,26 +62,26 @@ Color.prototype = Object.assign(Object.create(Vector.prototype), {
     }
 });
 
-export const axiom = "X";
-export const productionRules = new Map(objGen({
-    "X": Array.from("F-[[X]+X]+F[+FX]-X"),
-    "F": ["F", "F"],
-    "+": "+",
-    "-": "-",
-    "[": "[",
-    "]": "]"
-}));
+export const axiom = "X",
+    productionRules = new Map(objGen({
+        "X": Array.from("F-[[X]+X]+F[+FX]-X"),
+        "F": ["F", "F"],
+        "+": "+",
+        "-": "-",
+        "[": "[",
+        "]": "]"
+    }));
 
 export default function(ctx, step, angle, startAngle, startLength, lengthChange) {
-    angle = parseInt(angle, 10) * Math.PI / 180;
+    angle = degToRad(angle);
 
     var pos = new Vector(10, 10),
         stack = [],
-        length = parseInt(startLength, 10),
-        currentAngle = parseInt(startAngle, 10) * Math.PI / 180,
+        length = startLength,
+        currentAngle = degToRad(startAngle),
         dir = new Vector(Math.cos(currentAngle), Math.sin(currentAngle));
 
-    lengthChange = parseInt(lengthChange, 10);
+    lengthChange = lengthChange;
 
     ctx.beginPath();
     ctx.moveTo(pos[0], pos[1]);
@@ -71,24 +96,22 @@ export default function(ctx, step, angle, startAngle, startLength, lengthChange)
             ctx.stroke();
             ctx.closePath();
 
+            ctx.strokeStyle = (new Color(parseInt(Math.random() * 255, 10), parseInt(Math.random() * 255, 10), parseInt(Math.random() * 255, 10))).toString();
+
             ctx.beginPath();
             ctx.moveTo(pos[0], pos[1]);
         } else if(symbol === "[") {
             stack.push({
-                "pos": pos,
+                "pos": pos.slice(),
                 "length": length,
                 "dir": dir,
                 "currentAngle": currentAngle
             });
         } else if(symbol === "F") {
-            pos = pos.add(dir.times(length));
+            pos.add(dir.timesCopy(length));
             length += lengthChange;
 
             ctx.lineTo(pos[0], pos[1]);
-            ctx.stroke();
-            ctx.closePath();
-            ctx.strokeStyle = (new Color(parseInt(Math.random() * 255, 10), parseInt(Math.random() * 255, 10), parseInt(Math.random() * 255, 10))).toString();
-            ctx.beginPath();
             ctx.moveTo(pos[0], pos[1]);
         } else if(symbol === "-" || symbol === "+") {
             if(symbol === "-") {
