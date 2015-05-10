@@ -8,7 +8,7 @@
   "moduleType": [
     "es6"
   ],
-  "license": "GPL-3.0",
+  "license": "MIT",
   "ignore": [
     "**/.*",
     "node_modules",

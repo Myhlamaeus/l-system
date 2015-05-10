@@ -18,7 +18,7 @@
   "keywords": [
     "l-system"
   ],
-  "license": "GPL-3.0",
+  "license": "MIT",
   "main": "dist/l-system.js",
   "repository": {
     "type": "git",
