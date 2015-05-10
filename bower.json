@@ -1,5 +1,6 @@
 {
   "name": "l-system",
+  "description": "An L-System implementation in ES6",
   "main": "l-system.js",
   "version": "0.1.0",
   "authors": [
