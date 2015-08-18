@@ -10,6 +10,7 @@
     "babel": "^5.2.17",
     "gulp": "^3.8.11",
     "gulp-babel": "^5.1.0",
+    "gulp-concat": "^2.6.0",
     "gulp-mocha": "^2.0.1",
     "gulp-open": "^1.0.0",
     "gulp-replace": "^0.5.3",
