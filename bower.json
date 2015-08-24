@@ -1,20 +1,20 @@
 {
   "name": "l-system",
   "description": "An L-System implementation in ES6",
-  "main": "l-system.js",
   "version": "0.3.0",
   "authors": [
     "Malte-Maurice Dreyer <dreyer.maltem+dev@gmail.com>"
   ],
-  "moduleType": [
-    "es6"
-  ],
-  "license": "MIT",
   "ignore": [
     "**/.*",
     "node_modules",
     "bower_components",
     "test",
     "tests"
+  ],
+  "license": "MIT",
+  "main": "l-system.js",
+  "moduleType": [
+    "es6"
   ]
 }

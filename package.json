@@ -29,8 +29,8 @@
     "url": "https://github.com/ileri/l-system.git"
   },
   "scripts": {
-    "start": "npm run prepublish && static .",
     "prepublish": "gulp build",
+    "start": "npm run prepublish && static .",
     "test": "standard {test/,lib/,./}*.js && gulp test"
   }
 }
