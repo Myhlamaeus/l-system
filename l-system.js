@@ -6,8 +6,8 @@ class LSystem {
 
     productionRules = new Map(productionRules)
 
-    const alphabet = Array.from(productionRules.keys()),
-      constants = []
+    const alphabet = Array.from(productionRules.keys())
+    const constants = []
 
     if (alphabet.indexOf(axiom) === -1) {
       throw new Error('LSystem: axiom (argument 0) has to be in productionRules')
