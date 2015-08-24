@@ -5,6 +5,7 @@
   "authors": [
     "Malte-Maurice Dreyer <dreyer.maltem+dev@gmail.com>"
   ],
+  "homepage": "https://github.com/ileri/l-system",
   "ignore": [
     "**/.*",
     "node_modules",
@@ -12,9 +13,16 @@
     "test",
     "tests"
   ],
+  "keywords": [
+    "l-system"
+  ],
   "license": "MIT",
   "main": "l-system.js",
   "moduleType": [
     "es6"
-  ]
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/ileri/l-system.git"
+  }
 }
