@@ -22,7 +22,7 @@ gulp.task('test', function () {
   var mocha = require('gulp-mocha')
 
   return gulp.src(['test/setup/node.js', 'test/unit/*.js'], {
-      read: false
-    })
+    read: false
+  })
     .pipe(mocha())
 })
