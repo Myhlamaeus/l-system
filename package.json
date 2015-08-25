@@ -1,7 +1,7 @@
 {
   "name": "l-system",
   "description": "An L-System implementation in ES6",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "author": "Malte-Maurice Dreyer <dreyer.maltem+dev@gmail.com>",
   "bugs": {
     "url": "https://github.com/ileri/l-system/issues"
